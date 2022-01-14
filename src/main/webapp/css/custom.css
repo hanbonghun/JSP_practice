@@ -1,0 +1,26 @@
+@charset "EUC-KR";
+
+@import url(https://fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+.jejugothic * { 
+ font-family: 'Jeju Gothic', sans-serif;
+}
+
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+.nanumgothic * {
+ font-family: 'Nanum Gothic', sans-serif;
+}
+
+.navbar-brand, h1, h2, h3, h4{
+	font-family: 'Jeju Gothic';
+}
+
+h5{
+	font-family: 'Jeju Gothic';
+	font-size : 18px;	
+}
+
+body{
+	font-family: 'Nanum Gothic';
+}
