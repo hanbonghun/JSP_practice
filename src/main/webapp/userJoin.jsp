@@ -1,3 +1,4 @@
+<%@page import="java.io.PrintWriter"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -16,10 +17,23 @@
 
 
 </head>
+
+<%
+String userID = null;
+if (session.getAttribute("userID") != null) { 
+	userID = (String)session.getAttribute("userID");
+}
+if(userID !=null){
+	PrintWriter script = response.getWriter();
+	script.println("<script>");
+	script.println("alert('이미 로그인 하였습니다.');");
+	script.println("location.href= 'index.jsp'");
+	script.println("</script>");
+}
+%>
+
 <body>
 	<jsp:include page="./WEB-INF/views/header.jsp" />
-
-
 	<section class="container mt-3" style="max-width: 560px;">
 		<form method="post" action="./userRegisterAction.jsp">
 			<div class="form-group">
@@ -38,8 +52,7 @@
 			<button type="submit" class="btn btn-primary">회원가입</button>
 		</form>
 	</section>
-
-
+	
 	<jsp:include page="./WEB-INF/views/footer.jsp" />
 
 

@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ page import="user.UserDAO"%>
+<%@ page import="java.io.PrintWriter"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +22,7 @@
 <body>
 
 	<jsp:include page="./WEB-INF/views/header.jsp" />
-	
+
 
 	<section class="container">
 		<form class="form-inline mt-3" method="get" action="./index.jsp">
@@ -31,12 +34,38 @@
 			</select> <input class="form-control mx-1 mt-2" type="text" name="search"
 				placeholder="내용 입력">
 			<button type="submit" class="btn btn-primary mx-1 mt-2">검색</button>
+
+			<%
+			UserDAO userDAO = new UserDAO();
+			String userID = null;
+
+			if (session.getAttribute("userID") != null) {
+				userID = (String) session.getAttribute("userID");
+			}
+
+			if (userID != null && userDAO.getUserEmailChecked(userID) == true) {
+			%>
 			<a class="btn btn-primary mx-1 mt-2" data-toggle="modal"
-				href="#registerModal">등록하기</a> <a class="btn btn-danger mx-1 mt-2"
-				data-toggle="modal" href="#reportModal">신고하기</a>
+				href="#registerModal">등록하기</a>
+			<%
+			}
+
+			if (userID != null && (userDAO.getUserEmailChecked(userID) == false)) {
+			%>
+			<a class="btn btn-primary mx-1 mt-2" href="emailSendConfirm.jsp">등록하기</a>
+			<%
+			}
+
+			if (userID == null) {
+			%>
+
+			<a class="btn btn-primary mx-1 mt-2" href="userLogin.jsp">등록하기</a>
+			<%
+			}
+			%>
+
+			<a class="btn btn-danger mx-1 mt-2"  data-toggle="modal" href="#reportModal">신고하기</a>
 		</form>
-
-
 		<div class="card  bg-light mt-3">
 			<div class="card-header bg-light">
 				<div class="row">
@@ -44,26 +73,28 @@
 						강의명 <small>교수명</small>
 					</div>
 					<div class="col-4 text-right">
-						종합<span style="color:red;"> A</span>
+						종합<span style="color: red;"> A</span>
 					</div>
 				</div>
 			</div>
 			<div class="card-body">
 				<h5 class="card-title">
 					좋은 강의 <small>(2017년 가을학기)<small>
-				</h5>	
-				    <p style ="font-size: 15px;"class="card-text">강의가 널널, 솔직히 배운 건 없음</p>
+				</h5>
+				<p style="font-size: 15px;" class="card-text">강의가 널널, 솔직히 배운 건
+					없음</p>
 				<div class="row">
 					<div class="col-9 text-left">
-						과제 <span style="color:red">보통</span>
-						조모임 <span style="color:red">없음</span>
-						출결 <span style="color:red">전자출결</span>
-						<span style="color:green">(추천 : 15)</span>
-						
+						과제 <span style="color: red">보통</span> 조모임 <span style="color: red">없음</span>
+						출결 <span style="color: red">전자출결</span> <span style="color: green">(추천
+							: 15)</span>
+
 					</div>
 					<div class="col-3 text-right">
-						<a onclick="return confirm('추천하시겠습니까?')" href="./likeAction.jsp?evaluationID=">추천</a>
-						<a onclick="return confirm('삭제하시겠습니까?')" href="./deleteAction.jsp?evaluationID=">삭제</a>
+						<a onclick="return confirm('추천하시겠습니까?')"
+							href="./likeAction.jsp?evaluationID=">추천</a> <a
+							onclick="return confirm('삭제하시겠습니까?')"
+							href="./deleteAction.jsp?evaluationID=">삭제</a>
 					</div>
 				</div>
 			</div>
@@ -75,57 +106,61 @@
 						강의명 <small>교수명</small>
 					</div>
 					<div class="col-4 text-right">
-						종합<span style="color:red;"> A</span>
+						종합<span style="color: red;"> A</span>
 					</div>
 				</div>
 			</div>
 			<div class="card-body">
 				<h5 class="card-title">
 					좋은 강의 <small>(2017년 가을학기)<small>
-				</h5>	
-				    <p style ="font-size: 15px;"class="card-text">강의가 널널, 솔직히 배운 건 없음</p>
+				</h5>
+				<p style="font-size: 15px;" class="card-text">강의가 널널, 솔직히 배운 건
+					없음</p>
 				<div class="row">
 					<div class="col-9 text-left">
-						과제 <span style="color:red">보통</span>
-						조모임 <span style="color:red">없음</span>
-						출결 <span style="color:red">전자출결</span>
-						<span style="color:green">(추천 : 15)</span>
-						
+						과제 <span style="color: red">보통</span> 조모임 <span style="color: red">없음</span>
+						출결 <span style="color: red">전자출결</span> <span style="color: green">(추천
+							: 15)</span>
+
 					</div>
 					<div class="col-3 text-right">
-						<a onclick="return confirm('추천하시겠습니까?')" href="./likeAction.jsp?evaluationID=">추천</a>
-						<a onclick="return confirm('삭제하시겠습니까?')" href="./deleteAction.jsp?evaluationID=">삭제</a>
+						<a onclick="return confirm('추천하시겠습니까?')"
+							href="./likeAction.jsp?evaluationID=">추천</a> <a
+							onclick="return confirm('삭제하시겠습니까?')"
+							href="./deleteAction.jsp?evaluationID=">삭제</a>
 					</div>
 				</div>
 			</div>
 		</div>
-				<div class="card  bg-light mt-3">
+		<div class="card  bg-light mt-3">
 			<div class="card-header bg-light">
 				<div class="row">
 					<div class="col-8 text-left">
 						강의명 <small>교수명</small>
 					</div>
 					<div class="col-4 text-right">
-						종합<span style="color:red;"> A</span>
+						종합<span style="color: red;"> A</span>
 					</div>
 				</div>
 			</div>
 			<div class="card-body">
 				<h5 class="card-title">
 					좋은 강의 <small>(2017년 가을학기)<small>
-				</h5>	
-				    <p style ="font-size: 15px;"class="card-text">강의가 널널, 솔직히 배운 건 없음</p>
+				</h5>
+				<p style="font-size: 15px;" class="card-text">강의가 널널, 솔직히 배운 건
+					없음</p>
 				<div class="row">
 					<div class="col-9 text-left">
-						과제 <span style="color:red">보통</span>
-						조모임 <span style="color:red">없음</span>
-						출결 <span style="color:red">전자출결</span>
-						<span style="color:green">(추천 : 15)</span>
-						
+						과제 <span style="color: red">보통</span> 조모임 <span style="color: red">없음</span>
+						출결 <span style="color: red">전자출결</span> <span style="color: green">(추천
+							: 15)</span>
+
 					</div>
 					<div class="col-3 text-right">
-						<a onclick="return confirm('추천하시겠습니까?')" href="./likeAction.jsp?evaluationID=">추천</a>
-						<a onclick="return confirm('삭제하시겠습니까?')" href="./deleteAction.jsp?evaluationID=">삭제</a>
+						<a onclick="return confirm('추천하시겠습니까?')"
+							href="./likeAction.jsp?evaluationID=">추천</a> <a
+							onclick="return confirm('삭제하시겠습니까?')"
+							href="./deleteAction.jsp?evaluationID=">삭제</a>
 					</div>
 				</div>
 			</div>
@@ -253,8 +288,6 @@
 		</div>
 	</div>
 
-
-	
 	<div class="modal fade" id="reportModal" tabindex="-1" role="dialog"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
@@ -280,8 +313,6 @@
 									style="height: 180px;"></textarea>
 							</div>
 						</div>
-
-
 					</form>
 				</div>
 				<div class="modal-footer">
@@ -292,8 +323,8 @@
 			</div>
 		</div>
 	</div>
-	
-		<jsp:include page="./WEB-INF/views/footer.jsp" />
+
+	<jsp:include page="./WEB-INF/views/footer.jsp" />
 
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
 		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

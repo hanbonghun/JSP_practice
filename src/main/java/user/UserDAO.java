@@ -83,7 +83,7 @@ public class UserDAO {
 	
 	
 	public boolean getUserEmailChecked(String userID) { // 사용자 이메일 검증 유무 확인 
-		String SQL = "SELECT userEamilChecked FROM USER WHERE userID = ?;";
+		String SQL = "SELECT userEmailChecked FROM USER WHERE userID = ?;";
 		ResultSet rs = null;
 		Connection conn = null;
 		PreparedStatement pstmt =null;
