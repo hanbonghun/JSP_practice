@@ -5,13 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import util.DatabaseUtil;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 
-//DTO 는 JSP에서 하나의 데이터 단위를 담기 위한 객체
+//DTO : JSP에서 하나의 데이터 단위를 담기 위한 객체
+//DAO : 데이터 베이스와 1:1 연동 (Database Access Object)
 
-
-public class UserDAO { // 데이터 베이스와 1:1 연동 (Database Access Object)
+public class UserDAO { 
 	
 	public void disconnect(Connection conn, ResultSet rs, PreparedStatement pstmt) { //db 연결 해제 
 		try {
@@ -127,7 +125,7 @@ public class UserDAO { // 데이터 베이스와 1:1 연동 (Database Access Object)
 	
 	
 	public String getUserEmail(String userID) { // 사용자 이메일 주소 반환 
-		String SQL = "SELECT userEmail FROM USER WHERE  userID = ?;";
+		String SQL = "SELECT userEmail FROM USER WHERE userID = ?;";
 		ResultSet rs = null;
 		Connection conn = null;
 		PreparedStatement pstmt =null;
@@ -135,9 +133,9 @@ public class UserDAO { // 데이터 베이스와 1:1 연동 (Database Access Object)
 			conn = DatabaseUtil.getConnection();
 			pstmt = conn.prepareStatement(SQL);// sql에서 중복코드 문제 방지
 			pstmt.setString(1, userID); // ? 내용 채우는 항목 1
-			pstmt.executeUpdate();
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
+				System.out.println("찾음");
 				return rs.getString(1);
 			}
 

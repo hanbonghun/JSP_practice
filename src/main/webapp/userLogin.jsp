@@ -21,6 +21,7 @@
 
 
 	<section class="container mt-3" style="max-width: 560px;">
+	
 		<form method="post" action="./userLoginAction.jsp">
 			<div class="form-group">
 				<label>아이디</label>
@@ -32,6 +33,16 @@
 			</div>
 			</div>
 			<button type="submit" class="btn btn-primary">로그인</button>
+			
+			<% String action = request.getParameter("action");
+				if(action.equals("afterSendMail") ){ %>
+					<div class="alert alert-success mt-4" role="alert">
+					인증 메일이 전송되었습니다. 입력한 이메일로 접속하여 인증해주세요.
+				</div>
+				<% 	
+				}
+			%>
+	
 		</form>
 	</section>
 
