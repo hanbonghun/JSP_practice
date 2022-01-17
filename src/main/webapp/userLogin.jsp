@@ -47,11 +47,11 @@ if(userID !=null){
 				<input type="password" name="userPassword" class="form-control" />
 			</div>
 			</div>
-			<button type="submit" class="btn btn-primary">로그인</button>
-			
-
-	
+			<button type="submit" class="btn btn-primary">로그인</button>	
+								<a href ="userJoin.jsp" class="btn btn-secondary">회원가입</a>
+					
 		</form>
+		
 	</section>
 
 
