@@ -47,12 +47,16 @@
 			%>
 			<a class="btn btn-primary mx-1 mt-2" data-toggle="modal"
 				href="#registerModal">등록하기</a>
+					<a class="btn btn-danger mx-1 mt-2" data-toggle="modal"
+				href="#reportModal">신고하기</a>
 			<%
 			}
 
 			if (userID != null && (userDAO.getUserEmailChecked(userID) == false)) {
 			%>
 			<a class="btn btn-primary mx-1 mt-2" href="emailSendConfirm.jsp">등록하기</a>
+				<a class="btn btn-danger mx-1 mt-2"
+				href="emailSendConfirm.jsp">신고하기</a>
 			<%
 			}
 
@@ -60,12 +64,17 @@
 			%>
 
 			<a class="btn btn-primary mx-1 mt-2" href="userLogin.jsp">등록하기</a>
+			<a class="btn btn-danger mx-1 mt-2" 
+				href="userLogin.jsp">신고하기</a>
 			<%
 			}
 			%>
 
-			<a class="btn btn-danger mx-1 mt-2" data-toggle="modal"
-				href="#reportModal">신고하기</a>
+
+
+
+
+		
 		</form>
 
 		<div class="card  bg-light mt-3">
@@ -242,8 +251,7 @@
 									style="height: 180px;"></textarea>
 							</div>
 							<div class="form-group col-md-2">
-								<label>종합</label> <select name="totalScore"
-									class="form-control">
+								<label>종합</label> <select name="totalScore" class="form-control">
 									<option value="A">A</option>
 									<option value="B">B</option>
 									<option value="C">C</option>
@@ -252,8 +260,7 @@
 								</select>
 							</div>
 							<div class="form-group col-md-3">
-								<label>과제</label> <select name="assignment"
-									class="form-control">
+								<label>과제</label> <select name="assignment" class="form-control">
 									<option value="많음">많음</option>
 									<option value="보통">보통</option>
 									<option value="적음">적음</option>
@@ -269,8 +276,7 @@
 								</select>
 							</div>
 							<div class="form-group col-md-4">
-								<label>출결</label> <select name="attendance"
-									class="form-control">
+								<label>출결</label> <select name="attendance" class="form-control">
 									<option value="전자출결">전자출결</option>
 									<option value="직접호명">직접호명</option>
 									<option value="없음">없음</option>
@@ -313,13 +319,14 @@
 									style="height: 180px;"></textarea>
 							</div>
 						</div>
-					</form>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-dismiss="modal">닫기</button>
 					<button type="submit" class="btn btn-danger">신고하기</button>
 				</div>
+				</form>
+
 			</div>
 		</div>
 	</div>

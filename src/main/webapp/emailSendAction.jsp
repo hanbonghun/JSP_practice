@@ -74,7 +74,7 @@ if (emailChecked == true) { //이메일 인증이 된 상태
 <!DOCTYPE html>
 <html>
 <head>
-<title>강의평가 웹 사이트</title>
+<title>메일 전송 완료</title>
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
