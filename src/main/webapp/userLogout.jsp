@@ -11,6 +11,8 @@ if (session.getAttribute("userID") == null) {
 	script.println("alert('로그인이 필요합니다.');");
 	script.println("location.href= 'userLogin.jsp'");
 	script.println("</script>");
+	script.close();
+	return ;
 }
 
 

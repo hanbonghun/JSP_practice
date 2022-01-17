@@ -64,8 +64,10 @@
 			}
 			%>
 
-			<a class="btn btn-danger mx-1 mt-2"  data-toggle="modal" href="#reportModal">신고하기</a>
+			<a class="btn btn-danger mx-1 mt-2" data-toggle="modal"
+				href="#reportModal">신고하기</a>
 		</form>
+
 		<div class="card  bg-light mt-3">
 			<div class="card-header bg-light">
 				<div class="row">
@@ -186,7 +188,7 @@
 						<div class="form-row">
 							<div class="form-group col-sm-6">
 								<div>
-									<label>강의명</label> <input type="text" name="LectureName"
+									<label>강의명</label> <input type="text" name="lectureName"
 										class="form-control">
 								</div>
 							</div>
@@ -197,7 +199,7 @@
 							</div>
 
 							<div class="form-group col-md-4">
-								<label>연도</label> <select name="LectureYear"
+								<label>연도</label> <select name="lectureYear"
 									class="form-control">
 									<option value="2011">2011</option>
 									<option value="2012">2012</option>
@@ -214,7 +216,7 @@
 								</select>
 							</div>
 							<div class="form-group col-md-4">
-								<label>수강학기</label> <select name="LectureYear"
+								<label>수강학기</label> <select name="semesterDivide"
 									class="form-control">
 									<option value="1학기">1학기</option>
 									<option value="여름학기">여름학기</option>
@@ -223,11 +225,11 @@
 								</select>
 							</div>
 							<div class="form-group col-md-4">
-								<label>수강학기</label> <select name="LectureDivide"
+								<label>구분</label> <select name="lectureDivide"
 									class="form-control">
-									<option value="1학기">전공</option>
-									<option value="여름학기">교양</option>
-									<option value="2학기">기타</option>
+									<option value="전공">전공</option>
+									<option value="교양">교양</option>
+									<option value="기타">기타</option>
 								</select>
 							</div>
 							<div class="form-group col-md-12">
@@ -240,7 +242,7 @@
 									style="height: 180px;"></textarea>
 							</div>
 							<div class="form-group col-md-2">
-								<label>종합</label> <select name="LectureDivide"
+								<label>종합</label> <select name="totalScore"
 									class="form-control">
 									<option value="A">A</option>
 									<option value="B">B</option>
@@ -250,7 +252,7 @@
 								</select>
 							</div>
 							<div class="form-group col-md-3">
-								<label>과제</label> <select name="LectureDivide"
+								<label>과제</label> <select name="assignment"
 									class="form-control">
 									<option value="많음">많음</option>
 									<option value="보통">보통</option>
@@ -260,14 +262,14 @@
 								</select>
 							</div>
 							<div class="form-group col-md-3">
-								<label>조모임</label> <select name="LectureDivide"
+								<label>조모임</label> <select name="groupMeeting"
 									class="form-control">
 									<option value="있음">있음</option>
 									<option value="없음">없음</option>
 								</select>
 							</div>
 							<div class="form-group col-md-4">
-								<label>출결</label> <select name="LectureDivide"
+								<label>출결</label> <select name="attendance"
 									class="form-control">
 									<option value="전자출결">전자출결</option>
 									<option value="직접호명">직접호명</option>
@@ -275,14 +277,12 @@
 								</select>
 							</div>
 						</div>
-
-
-					</form>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-dismiss="modal">닫기</button>
 					<button type="submit" class="btn btn-primary">저장</button>
+					</form>
 				</div>
 			</div>
 		</div>

@@ -11,6 +11,8 @@ if (session.getAttribute("userID") != null) {
 	script.println("alert('이미 로그인 하였습니다.');");
 	script.println("location.href= 'index.jsp'");
 	script.println("</script>");
+	script.close();
+	return ;
 }
 
 	request.setCharacterEncoding("utf-8");  //데이터를(한글 포함) utf-8로 엔코딩하여 처리한다.

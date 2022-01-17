@@ -29,6 +29,8 @@ if(userID ==null){
 	script.println("alert('로그인을 해주세요.');");
 	script.println("location.href= 'userLogin.jsp'");
 	script.println("</script>");
+	script.close();
+	return ;
 }
 %>
 <script>
