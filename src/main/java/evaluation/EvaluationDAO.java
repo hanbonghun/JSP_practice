@@ -115,5 +115,70 @@ public class EvaluationDAO {
 			return evaluationList; // 데이터베이스 오류
 		
 	}
+	
+	public int like(String evaluationID) { // 추천 눌렀을 떄 
+		
+		String SQL = "UPDATE EVALUATION SET likeCount = likeCount+1  WHERE  evaluationID = ?;";
+		ResultSet rs = null;
+		Connection conn = null;
+		PreparedStatement pstmt =null;
+		try {
+			conn = DatabaseUtil.getConnection();
+			pstmt = conn.prepareStatement(SQL);// sql에서 중복코드 문제 방지
+			pstmt.setInt(1, Integer.parseInt(evaluationID)); // ? 내용 채우는 항목 1
+			return pstmt.executeUpdate();
+			
 
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			disconnect(conn,rs,pstmt);
+		}
+		return -1; // 데이터베이스 오류 
+	}
+	
+public int delete(String evaluationID) { //  강의평가 글 삭제
+		
+		String SQL = "DELETE FROM EVALUATION  WHERE  evaluationID = ?;";
+		ResultSet rs = null;
+		Connection conn = null;
+		PreparedStatement pstmt =null;
+		try {
+			conn = DatabaseUtil.getConnection();
+			pstmt = conn.prepareStatement(SQL);// sql에서 중복코드 문제 방지
+			pstmt.setInt(1, Integer.parseInt(evaluationID)); // ? 내용 채우는 항목 1
+			return pstmt.executeUpdate();
+			
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			disconnect(conn,rs,pstmt);
+		}
+		return -1; // 데이터베이스 오류 
+	}
+
+
+public String getUserID(String evaluationID) { // 강의평가 글을 작성한 사람의 ID를 가져오는 함수 
+	
+	String SQL = "SELECT userID FROM EVALUATION WHERE evaluationID = ?;";
+	ResultSet rs = null;
+	Connection conn = null;
+	PreparedStatement pstmt =null;
+	try {
+		conn = DatabaseUtil.getConnection();
+		pstmt = conn.prepareStatement(SQL);// sql에서 중복코드 문제 방지
+		pstmt.setInt(1, Integer.parseInt(evaluationID)); // ? 내용 채우는 항목 1
+		rs = pstmt.executeQuery();
+		if(rs.next()) { //결과 존재 
+			return  rs.getString(1); // userEmailChecked 의 값 반환 
+		}
+	} catch (Exception e) {
+		e.printStackTrace();
+	} finally {
+		disconnect(conn,rs,pstmt);
+	}
+	return null; // 데이터베이스 오류 
 }
+}
+
