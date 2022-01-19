@@ -32,9 +32,9 @@ if (emailChecked == true) { //이메일 인증이 된 상태
 	script.close();
 	return;
 } else { //인증이 되지 않은 상태 
-	final String from = "bng4535@khu.ac.kr";
-	final String password = "gksqhdgns1";
-	final String host = "http://localhost:8080/Lecture%20Evaluation/";
+	final String from = "";//your email
+	final String password =""; //your password
+	final String host = "";//host address ;
 	String to = userDAO.getUserEmail(userID);
 	String sub = "강의평가를 위한 인증 메일";
 	String msg = "다음 링크에 접속하여 메일 인증을 진행하세요." + "<a href='" + host + "emailCheckAction.jsp?code=" + SHA256.encrypt(to)
