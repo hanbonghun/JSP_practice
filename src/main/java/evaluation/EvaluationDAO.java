@@ -38,19 +38,20 @@ public class EvaluationDAO {
 		try {
 			conn = DatabaseUtil.getConnection();
 			pstmt = conn.prepareStatement(SQL);// sql에서 중복코드 문제 방지
-			pstmt.setString(1, evalutionDTO.getUserID()); // ? 내용 채우는 항목 1
-			pstmt.setString(2, evalutionDTO.getLectureName());
-			pstmt.setString(3, evalutionDTO.getProfessorName());
+			pstmt.setString(1, evalutionDTO.getUserID().replaceAll("<", "&lt").replaceAll(">","&lt")); // ? 내용 채우는 항목 1
+			pstmt.setString(2, evalutionDTO.getLectureName().replaceAll("<", "&lt").replaceAll(">","&lt"));
+			pstmt.setString(3, evalutionDTO.getProfessorName().replaceAll("<", "&lt").replaceAll(">","&lt"));
 			pstmt.setInt(4, evalutionDTO.getLectureYear());
-			pstmt.setString(5, evalutionDTO.getSemesterDivide());
-			pstmt.setString(6, evalutionDTO.getLectureDivide());
-			pstmt.setString(7, evalutionDTO.getEvaluationTitle());
-			pstmt.setString(8, evalutionDTO.getEvaluationContent());
-			pstmt.setString(9, evalutionDTO.getTotalScore());
-			pstmt.setString(10, evalutionDTO.getAssignment());
-			pstmt.setString(11, evalutionDTO.getGroupMeeting());
-			pstmt.setString(12, evalutionDTO.getAttendance());
-
+			pstmt.setString(5, evalutionDTO.getSemesterDivide().replaceAll("<", "&lt").replaceAll(">","&lt"));
+			pstmt.setString(6, evalutionDTO.getLectureDivide().replaceAll("<", "&lt").replaceAll(">","&lt"));
+			pstmt.setString(7, evalutionDTO.getEvaluationTitle().replaceAll("<", "&lt").replaceAll(">","&lt"));
+			pstmt.setString(8, evalutionDTO.getEvaluationContent().replaceAll("<", "&lt").replaceAll(">","&lt"));
+			pstmt.setString(9, evalutionDTO.getTotalScore().replaceAll("<", "&lt").replaceAll(">","&lt"));
+			pstmt.setString(10, evalutionDTO.getAssignment().replaceAll("<", "&lt").replaceAll(">","&lt"));
+			pstmt.setString(11, evalutionDTO.getGroupMeeting().replaceAll("<", "&lt").replaceAll(">","&lt"));
+			pstmt.setString(12, evalutionDTO.getAttendance().replaceAll("<", "&lt").replaceAll(">","&lt"));
+			//.replaceAll("<", "&lt").replaceAll(">","&lt") : xxs(cross site scripting) 공격 방지 
+			
 			return pstmt.executeUpdate(); // 데이터베이스 갱신 후 개수 반환, 성공 -> 1
 
 		} catch (Exception e) {
